@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
 import org.testng.annotations.Test;
+import org.junit.Assert;
 
 import teammates.test.BaseTestCase;
 
@@ -18,6 +19,123 @@ import teammates.test.BaseTestCase;
 public class TimeHelperTest extends BaseTestCase {
 
     private static final String DATETIME_DISPLAY_FORMAT = "EEE, dd MMM yyyy, hh:mm a z";
+
+    @Test
+    public void testFormatInstant_CT1() {
+        // Teste para caso de teste 1
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = "EEE, dd MMM yyyy, 'NOON' z";
+        String expectedOutput = "Sun, 03 Jul 2023, NOON UTC";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT2() {
+        // Teste para o caso de teste 2
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = "EEE, dd MMM yyyy, hh:mm a z";
+        String expectedOutput = "Sun, 03 Jul 2023, 10:30 AM UTC";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT3() {
+        // Teste para o caso de teste 3
+        Instant instant = null;
+        String timeZone = "UTC";
+        String pattern = "EEE, dd MMM yyyy, hh:mm a z";
+        String expectedOutput = "";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT4() {
+        // Teste para o caso de teste 4
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = null;
+        String pattern = "EEE, dd MMM yyyy, hh:mm a z";
+        String expectedOutput = "";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT5() {
+        // Teste para o caso de teste 5
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = null;
+        String expectedOutput = "";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT6() {
+        // Teste para o caso de teste 6
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = "";
+        String expectedOutput = "";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT7() {
+        // Teste para o caso de teste 7
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = "EEE, dd MMM yyyy, hh:mm a z";
+        String expectedOutput = "Sun, 03 Jul 2023, 10:30 AM UTC";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT8() {
+        // Teste para o caso de teste 8
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = "EEE, dd MMM yyyy, 'NOON' z";
+        String expectedOutput = "Sun, 03 Jul 2023, NOON UTC";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testFormatInstant_CT9() {
+        // Teste para o caso de teste 9
+        Instant instant = Instant.parse("2023-07-03T10:30:00Z");
+        String timeZone = "UTC";
+        String pattern = "EEE, dd MMM yyyy, hh:mm:ss z '('VV')'";
+        String expectedOutput = "Sun, 03 Jul 2023, 10:30:00 UTC (UTC)";
+
+        String actualOutput = TimeHelper.formatInstant(instant, timeZone, pattern);
+
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
 
     @Test
     public void testEndOfYearDates() {
