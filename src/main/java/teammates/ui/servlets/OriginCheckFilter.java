@@ -160,7 +160,7 @@ public class OriginCheckFilter implements Filter {
             return "Missing CSRF token.";
         }
 
-        String sessionId = request.getRequestedSessionId();
+        String sessionId = request.getSession().getId();
         if (sessionId == null) {
             // Newly-created session
             sessionId = request.getSession().getId();
